@@ -8491,4 +8491,100 @@
 
   </application>
 
+  
+  <!-- ************************** 3GPP SGd / GDd AVPS ********************* -->
+  <avpdefn name="External-Identifier" code="3111" mandatory="must" protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="OctetString" />
+  </avpdefn>
+
+  <application id="16777313" vendor-id="TGPP" name="3GPP SGd/GDd' (Rel15)" 
+               URI="http://www.3gpp.org/ftp/Specs/archive/29_series/29.338/29338-f00.zip">
+    <command name="MO-Forward-Short-Message-Request" code="8388645" request="true">
+     <avp name="Session-Id" code="263" vendor="0" multiplicity="1" index="0" />
+     <!--  Missing DRMP -->
+      <avp name="Vendor-Specific-Application-Id" code="260" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Auth-Session-State" code="277" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Origin-Host" code="264" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Origin-Realm" code="296" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Destination-Host" code="293" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Destination-Realm" code="283" vendor="0" multiplicity="1" index="-1" />
+
+      <!--
+          Missing: SC-Address, OFR-Flags, 
+      -->
+
+         <avp name="Supported-Features" code="628" vendor="10415" multiplicity="0+" index="-1" />
+
+      <!--
+          User-Identifier, SM-RP-UI, SSMI-Correlation-ID, SM-Delivery-Outcome   
+      -->
+
+      <avp name="Proxy-Info" code="284" vendor="0" multiplicity="0+" index="-1" />
+      <avp name="Route-Record" code="282" vendor="0" multiplicity="0+" index="-1" />
+    </command>
+
+    <command name="MO-Forward-Short-Message-Answer" code="8388645" request="false">
+      <avp name="Session-Id" code="263" vendor="0" multiplicity="1" index="0" />
+      <!--  Missing DRMP -->
+      <avp name="Vendor-Specific-Application-Id" code="260" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Result-Code" code="268" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Experimental-Result" code="297" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Auth-Session-State" code="277" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Origin-Host" code="264" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Origin-Realm" code="296" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Supported-Features" code="628" vendor="10415" multiplicity="0+" index="-1" />
+       <!--
+         Missing:  SM-Delivery-Failure-Cause SM-RP-UI, External-Identifier
+      -->
+      <avp name="External-Identifier" code="3111" vendor="10415" multiplicity="0+" index="-1" />
+      <avp name="Failed-AVP" code="279" vendor="0" multiplicity="0+" index="-1" />
+      <avp name="Proxy-Info" code="284" vendor="0" multiplicity="0+" index="-1" />
+      <avp name="Route-Record" code="282" vendor="0" multiplicity="0+" index="-1" />
+    </command>
+
+    <command name="MT-Forward-Short-Message-Request" code="8388646" request="true">
+     <avp name="Session-Id" code="263" vendor="0" multiplicity="1" index="0" />
+      <!--  Missing DRMP -->
+      <avp name="Vendor-Specific-Application-Id" code="260" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Auth-Session-State" code="277" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Origin-Host" code="264" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Origin-Realm" code="296" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Destination-Host" code="293" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Destination-Realm" code="283" vendor="0" multiplicity="1" index="-1" />
+      <avp name="User-Name" code="1" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Supported-Features" code="628" vendor="10415" multiplicity="0+" index="-1" />
+
+      <!--  
+            SC-Address, SM-RP-UI, MME-Number-for-MT-SMS, SGSN-Number, TFR-Flags,
+            SM-Delivery-Timer, SM-Delivery-Start-Time, Maxiumum-Retransmission-Time, SMS-SMSC-Address 
+        -->
+
+      <avp name="Proxy-Info" code="284" vendor="0" multiplicity="0+" index="-1" />
+      <avp name="Route-Record" code="282" vendor="0" multiplicity="0+" index="-1" />
+    </command>
+
+    <command name="MT-Forward-Short-Message-Answer" code="8388646" request="false">
+      <avp name="Session-Id" code="263" vendor="0" multiplicity="1" index="0" />
+      <!--  Missing DRMP -->
+      <avp name="Vendor-Specific-Application-Id" code="260" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Result-Code" code="268" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Experimental-Result" code="297" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Auth-Session-State" code="277" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Origin-Host" code="264" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Origin-Realm" code="296" vendor="0" multiplicity="1" index="-1" />
+      <avp name="Supported-Features" code="628" vendor="10415" multiplicity="0+" index="-1" />
+
+      <!--  
+        Missing:Absent-User-Diagnostic-SM, SM-Delivery-Failure-Cause SM-RP-UI, 
+        Requested-Retransmission-Time, User-Identifier
+      -->
+
+      <avp name="Failed-AVP" code="279" vendor="0" multiplicity="0+" index="-1" />
+      <avp name="Proxy-Info" code="284" vendor="0" multiplicity="0+" index="-1" />
+      <avp name="Route-Record" code="282" vendor="0" multiplicity="0+" index="-1" />
+    </command>
+  </application>
+
+  
+
 </dictionary>
