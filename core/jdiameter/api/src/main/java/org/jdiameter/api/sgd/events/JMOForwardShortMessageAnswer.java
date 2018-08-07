@@ -50,7 +50,7 @@ import org.jdiameter.api.app.AppAnswerEvent;
  */
 public interface JMOForwardShortMessageAnswer extends AppAnswerEvent {
 
-  String _SHORT_NAME = "MO-SMS-ACK";
+  String _SHORT_NAME = "OFA";
   String _LONG_NAME = "MO-Forward-Short-Message-Answer";
   int code = 8388645;
 

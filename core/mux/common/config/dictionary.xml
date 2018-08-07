@@ -8497,35 +8497,137 @@
     <type type-name="OctetString" />
   </avpdefn>
 
+  <!-- To Validate from here (index ?, may-encrypt ? vendor-bit ?)-->
+  <avpdefn name="SC-Address" code="3300" vendor-id="TGPP" mandatory="must"
+           protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="OctetString" />
+  </avpdefn>
+
+  <avpdefn name="DRMP" code="301" mandatory="mustnot" protected="may" may-encrypt="no" vendor-bit="mustnot" >
+    <type type-name="Enumerated">
+      <enum code="0" name="PRIORITY_0" />
+      <enum code="1" name="PRIORITY_1" />
+      <enum code="2" name="PRIORITY_2" />
+      <enum code="3" name="PRIORITY_3" />
+      <enum code="4" name="PRIORITY_4" />
+      <enum code="5" name="PRIORITY_5" />
+      <enum code="6" name="PRIORITY_6" />
+      <enum code="7" name="PRIORITY_7" />
+      <enum code="8" name="PRIORITY_8" />
+      <enum code="9" name="PRIORITY_9" />
+      <enum code="10" name="PRIORITY_10" />
+      <enum code="11" name="PRIORITY_11" />
+      <enum code="12" name="PRIORITY_12" />
+      <enum code="13" name="PRIORITY_13" />
+      <enum code="14" name="PRIORITY_14" />
+      <enum code="15" name="PRIORITY_15" />
+    </type>
+  </avpdefn>
+
+  <avpdefn name="OFR-Flags" code="3328" mandatory="mustnot" protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="Unsigned32" />
+  </avpdefn>
+
+  <avpdefn name="User-Identifier" code="3102" mandatory="must" protected="may" may-encrypt="no" vendor-bit="mustnot" >
+    <grouped>
+      <avp name="User-Name" multiplicity="0-1" />
+      <avp name="MSISDN" multiplicity="0-1" />
+      <avp name="External-Identifier" multiplicity="0-1" />
+      <avp name="LMSI" multiplicity="0-1" />
+    </grouped>
+  </avpdefn>
+
+  <avpdefn name="SM-RP-UI" code="3301" mandatory="must" protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="OctetString" />
+  </avpdefn>
+
+  <avpdefn name="SMSMI-Correlation-ID" code="3324" mandatory="mustnot" protected="may" may-encrypt="no" vendor-bit="mustnot" >
+    <grouped>
+      <avp name="HSS-ID" multiplicity="0-1" />
+      <avp name="Originating-SIP-URI" multiplicity="0-1" />
+      <avp name="Destination-SIP-URI" multiplicity="0-1" />
+    </grouped>
+  </avpdefn>
+
+  <avpdefn name="SM-Delivery-Outcome" code="3316" mandatory="must" protected="may" may-encrypt="no" vendor-bit="mustnot" >
+    <grouped>
+      <avp name="MME-SM-Delivery-Outcome" multiplicity="0-1" />
+      <avp name="MSC-SM-Delivery-Outcome" multiplicity="0-1" />
+      <avp name="SGSN-SM-Delivery-Outcome" multiplicity="0-1" />
+      <avp name="IP-SM-GW-SM-Delivery-Outcome" multiplicity="0-1" />
+    </grouped>
+  </avpdefn>
+
+  <avpdefn name="SM-Delivery-Failure-Cause" code="3303" mandatory="must" protected="may" may-encrypt="no" vendor-bit="mustnot" >
+    <grouped>
+      <avp name="SM-Enumerated-Delivery-Failure-Cause" multiplicity="1" />
+      <avp name="SM-Diagnostic-Info" multiplicity="0-1" />
+    </grouped>
+  </avpdefn>
+
+  <avpdefn name="MME-Number-for-MT-SMS" code="1645" mandatory="mustnot" protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="OctetString" />
+  </avpdefn>
+
+  <avpdefn name="SGSN-Number" code="1489" mandatory="must" protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="OctetString" />
+  </avpdefn>
+
+  <avpdefn name="TFR-Flags" code="3302" mandatory="must" protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="Unsigned32" />
+  </avpdefn>
+
+  <avpdefn name="SM-Delivery-Timer" code="3306" mandatory="must" protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="Unsigned32" />
+  </avpdefn>
+
+  <avpdefn name="SM-Delivery-Start-Time" code="3307" mandatory="must" protected="may" may-encrypt="no" vendor-bit="mustnot" >
+    <type type-name="Time" />
+  </avpdefn>
+
+  <avpdefn name="Maximum-Retransmission-Time" code="3330" mandatory="mustnot" protected="may" may-encrypt="no" vendor-bit="mustnot" >
+    <type type-name="Time" />
+  </avpdefn>
+
+  <avpdefn name="SMS-GMSC-Address" code="3332" mandatory="mustnot" protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="OctetString" />
+  </avpdefn>
+
+  <avpdefn name="Absent-User-Diagnostic-SM" code="3322" mandatory="must" protected="may" may-encrypt="yes" vendor-bit="mustnot" >
+    <type type-name="Unsigned32" />
+  </avpdefn>
+
+  <avpdefn name="Requested-Retransmission-Time" code="3331" mandatory="mustnot" protected="may" may-encrypt="no" vendor-bit="mustnot" >
+    <type type-name="Time" />
+  </avpdefn>
+  <!-- To Validate to here -->
+
   <application id="16777313" vendor-id="TGPP" name="3GPP SGd/GDd' (Rel15)" 
                URI="http://www.3gpp.org/ftp/Specs/archive/29_series/29.338/29338-f00.zip">
+
     <command name="MO-Forward-Short-Message-Request" code="8388645" request="true">
-     <avp name="Session-Id" code="263" vendor="0" multiplicity="1" index="0" />
-     <!--  Missing DRMP -->
+      <avp name="Session-Id" code="263" vendor="0" multiplicity="1" index="0" />
+      <avp name="DRMP" code="301" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Vendor-Specific-Application-Id" code="260" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Auth-Session-State" code="277" vendor="0" multiplicity="1" index="-1" />
       <avp name="Origin-Host" code="264" vendor="0" multiplicity="1" index="-1" />
       <avp name="Origin-Realm" code="296" vendor="0" multiplicity="1" index="-1" />
       <avp name="Destination-Host" code="293" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Destination-Realm" code="283" vendor="0" multiplicity="1" index="-1" />
-
-      <!--
-          Missing: SC-Address, OFR-Flags, 
-      -->
-
-         <avp name="Supported-Features" code="628" vendor="10415" multiplicity="0+" index="-1" />
-
-      <!--
-          User-Identifier, SM-RP-UI, SSMI-Correlation-ID, SM-Delivery-Outcome   
-      -->
-
+      <avp name="SC-Address" code="3300" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="OFR-Flags" code="3328" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="Supported-Features" code="628" vendor="10415" multiplicity="0+" index="-1" />
+      <avp name="User-Identifier" code="3102" vendor="10415" multiplicity="1" index="-1" />
+      <avp name="SM-RP-UI" code="3301" vendor="10415" multiplicity="1" index="-1" />
+      <avp name="SMSMI-Correlation-ID" code="3324" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="SM-Delivery-Outcome" code="3316" vendor="10415" multiplicity="0-1" index="-1" />
       <avp name="Proxy-Info" code="284" vendor="0" multiplicity="0+" index="-1" />
       <avp name="Route-Record" code="282" vendor="0" multiplicity="0+" index="-1" />
     </command>
 
     <command name="MO-Forward-Short-Message-Answer" code="8388645" request="false">
       <avp name="Session-Id" code="263" vendor="0" multiplicity="1" index="0" />
-      <!--  Missing DRMP -->
+      <avp name="DRMP" code="301" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Vendor-Specific-Application-Id" code="260" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Result-Code" code="268" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Experimental-Result" code="297" vendor="0" multiplicity="0-1" index="-1" />
@@ -8533,39 +8635,42 @@
       <avp name="Origin-Host" code="264" vendor="0" multiplicity="1" index="-1" />
       <avp name="Origin-Realm" code="296" vendor="0" multiplicity="1" index="-1" />
       <avp name="Supported-Features" code="628" vendor="10415" multiplicity="0+" index="-1" />
-       <!--
-         Missing:  SM-Delivery-Failure-Cause SM-RP-UI, External-Identifier
-      -->
-      <avp name="External-Identifier" code="3111" vendor="10415" multiplicity="0+" index="-1" />
-      <avp name="Failed-AVP" code="279" vendor="0" multiplicity="0+" index="-1" />
+      <avp name="SM-Delivery-Failure-Cause" code="3303" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="SM-RP-UI" code="3301" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="External-Identifier" code="3111" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="Failed-AVP" code="279" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Proxy-Info" code="284" vendor="0" multiplicity="0+" index="-1" />
       <avp name="Route-Record" code="282" vendor="0" multiplicity="0+" index="-1" />
     </command>
 
     <command name="MT-Forward-Short-Message-Request" code="8388646" request="true">
      <avp name="Session-Id" code="263" vendor="0" multiplicity="1" index="0" />
-      <!--  Missing DRMP -->
+      <avp name="DRMP" code="301" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Vendor-Specific-Application-Id" code="260" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Auth-Session-State" code="277" vendor="0" multiplicity="1" index="-1" />
       <avp name="Origin-Host" code="264" vendor="0" multiplicity="1" index="-1" />
       <avp name="Origin-Realm" code="296" vendor="0" multiplicity="1" index="-1" />
-      <avp name="Destination-Host" code="293" vendor="0" multiplicity="0-1" index="-1" />
+      <avp name="Destination-Host" code="293" vendor="0" multiplicity="1" index="-1" />
       <avp name="Destination-Realm" code="283" vendor="0" multiplicity="1" index="-1" />
       <avp name="User-Name" code="1" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Supported-Features" code="628" vendor="10415" multiplicity="0+" index="-1" />
-
-      <!--  
-            SC-Address, SM-RP-UI, MME-Number-for-MT-SMS, SGSN-Number, TFR-Flags,
-            SM-Delivery-Timer, SM-Delivery-Start-Time, Maxiumum-Retransmission-Time, SMS-SMSC-Address 
-        -->
-
+      <avp name="SMSMI-Correlation-ID" code="3324" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="SC-Address" code="3300" vendor="0" multiplicity="1" index="-1" />
+      <avp name="SM-RP-UI" code="3301" vendor="10415" multiplicity="1" index="-1" />
+      <avp name="MME-Number-for-MT-SMS" code="1645" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="SGSN-Number" code="1489" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="TFR-Flags" code="3302" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="SM-Delivery-Timer" code="3306" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="SM-Delivery-Start-Time" code="3307" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="Maximum-Retransmission-Time" code="3330" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="SMS-GMSC-Address" code="3332" vendor="10415" multiplicity="0-1" index="-1" />
       <avp name="Proxy-Info" code="284" vendor="0" multiplicity="0+" index="-1" />
       <avp name="Route-Record" code="282" vendor="0" multiplicity="0+" index="-1" />
     </command>
 
     <command name="MT-Forward-Short-Message-Answer" code="8388646" request="false">
       <avp name="Session-Id" code="263" vendor="0" multiplicity="1" index="0" />
-      <!--  Missing DRMP -->
+      <avp name="DRMP" code="301" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Vendor-Specific-Application-Id" code="260" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Result-Code" code="268" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Experimental-Result" code="297" vendor="0" multiplicity="0-1" index="-1" />
@@ -8573,18 +8678,15 @@
       <avp name="Origin-Host" code="264" vendor="0" multiplicity="1" index="-1" />
       <avp name="Origin-Realm" code="296" vendor="0" multiplicity="1" index="-1" />
       <avp name="Supported-Features" code="628" vendor="10415" multiplicity="0+" index="-1" />
-
-      <!--  
-        Missing:Absent-User-Diagnostic-SM, SM-Delivery-Failure-Cause SM-RP-UI, 
-        Requested-Retransmission-Time, User-Identifier
-      -->
-
-      <avp name="Failed-AVP" code="279" vendor="0" multiplicity="0+" index="-1" />
+      <avp name="Absent-User-Diagnostic-SM" code="3322" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="SM-Delivery-Failure-Cause" code="3303" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="SM-RP-UI" code="3301" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="Requested-Retransmission-Time" code="3331" vendor="10415" multiplicity="0-1" index="-1" />
+      <avp name="User-Identifier" code="3102" vendor="10415" multiplicity="1" index="-1" />
+      <avp name="Failed-AVP" code="279" vendor="0" multiplicity="0-1" index="-1" />
       <avp name="Proxy-Info" code="284" vendor="0" multiplicity="0+" index="-1" />
       <avp name="Route-Record" code="282" vendor="0" multiplicity="0+" index="-1" />
     </command>
   </application>
-
-  
 
 </dictionary>

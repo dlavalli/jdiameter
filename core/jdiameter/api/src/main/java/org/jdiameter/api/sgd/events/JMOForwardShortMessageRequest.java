@@ -50,7 +50,7 @@ import org.jdiameter.api.app.AppRequestEvent;
  */
 public interface JMOForwardShortMessageRequest extends AppRequestEvent {
 
-  String _SHORT_NAME = "MO-SMS";
+  String _SHORT_NAME = "OFR";
   String _LONG_NAME = "MO-Forward-Short-Message-Request";
   int code = 8388645;
 

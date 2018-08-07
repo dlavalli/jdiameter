@@ -50,7 +50,7 @@ import org.jdiameter.api.app.AppAnswerEvent;
  */
 public interface JMTForwardShortMessageAnswer extends AppAnswerEvent {
 
-  String _SHORT_NAME = "MT-SMS-ACK";
+  String _SHORT_NAME = "TFA";
   String _LONG_NAME = "MT-Forward-Short-Message-Answer";
   int code = 8388646;
 

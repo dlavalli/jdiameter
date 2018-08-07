@@ -50,7 +50,7 @@ import org.jdiameter.api.app.AppRequestEvent;
  */
 public interface JMTForwardShortMessageRequest extends AppRequestEvent {
 
-  String _SHORT_NAME = "MT-SMS";
+  String _SHORT_NAME = "TFR";
   String _LONG_NAME = "MT-Forward-Short-Message-Request";
   int code = 8388646;
 
